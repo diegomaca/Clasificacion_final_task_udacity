@@ -20,6 +20,15 @@ Este proyecto se realiso en Python con las siguientes librerias:
 * pickle
 * nltk
 
+## Contenido
+En este post se puede encontrar:
+
+1. base_consulta.csv 
+2. base_datos.csv 
+3. Notebook Clasificacion_triage(1).py
+4. Notebook Clasificacion_triaje.ipnynb
+5. base_consulta.zip
+
 ## Descripción de los datos
 Para el desarrollo de este proyecto se tiene un conjunto de 20.000 registros de pacientes que han asistido a urgencias entre el año 2021 y 2022. La información esta divida en 2 conjuntos de datos:
 
@@ -88,6 +97,10 @@ En cuanto a mejoras: Se sugiere continuar la investigación para mejorar el expe
 
 ## Reconocimiento:
 1. Udacity Data scientist course.
+2. Virrey Solis por la proporción de los datos con fines academicos. 
+
+## Uso
+Los datos proporcionados para este proyecto se hizo con un fin únicamente académico y no comerciales. Además, fueron anonimizados y tratados de tal manera que los datos sensibles no hagan parte del proyecto ni esten disponibles al público.
 
 ## Bibliografia:
 1. Choi, S. W., Ko, T., Hong, K. J., & Kim, K. H. (2019). Machine learning-based prediction of Korean triaje and acuity scale level in emergency department patients. Healthcare informatics research, 25(4), 305–312. 10.4258/hir.2019.25.4.305.
