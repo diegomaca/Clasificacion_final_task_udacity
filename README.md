@@ -26,7 +26,7 @@ In this post, you can find:
 
 * base_consulta.csv
 * base_datos.csv
-* Notebook Clasificacion_triage(1).py
+* Notebook Clasificacion_triage.py
 * Notebook Clasificacion_triaje.ipnynb
 * base_consulta.zip
 
