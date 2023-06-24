@@ -1,109 +1,110 @@
-# Clasificación de Triage en mediante Modelos de Aprendizaje Automático
-En todas las entidades prestadoras de salud, garantizar la correcta clasificación de los pacientes que acuden a los servicios de urgencias representa un desafío crucial. La adecuada clasificación de triage es fundamental para asegurar que cada paciente reciba la atención adecuada en el momento preciso, sobre todo en situaciones críticas donde cada minuto cuenta.
+# Triage Classification through Machine Learning Models
+In all healthcare institutions, ensuring the accurate classification of patients who come to emergency services represents a crucial challenge. Proper triage classification is essential to ensure that each patient receives the appropriate care at the right time, especially in critical situations where every minute counts.
 
-En este contexto, es una necesidad ayudar a mejorar el proceso de clasificación de triage en salas de urgencias. Esto implica la implementación de herramientas y enfoques que permitan a los profesionales de la salud tomar decisiones más precisas y rápidas al clasificar a los pacientes.
+In this context, there is a need to improve the triage classification process in emergency rooms. This involves implementing tools and approaches that allow healthcare professionals to make more precise and faster decisions when classifying patients.
 
-## Objetivo
-En ese orden de ideas, el objetivo de este articulo es desarrollar un modelo de clasificación que permita clasificar a los pacientes que llegan a una sala de urgencias, teniendo en cuenta características como su temperatura, oximetría, edad entre otras en conjunto con el texto registrado por el profesional de la salud al momento de atender a los pacientes.
+## Objective
+In light of this, the objective of this article is to develop a classification model that allows for the classification of patients arriving at an emergency room, taking into account characteristics such as temperature, oxygen saturation, age, among others, along with the text recorded by the healthcare professional when attending to the patients.
 
-## Métricas y evaluación
-Teniendo en cuenta que se busca clasificar a los pacientes en 5 categorías de triage, estamos frente a un problema de clasificación multiclase. Como las clases no están balanceadas, la métrica que se usara para evaluar el desempeño de los modelos será f1 macro score, pues esta pondera la precisión y la exhaustividad.
+## Metrics and Evaluation
+Considering that the goal is to classify patients into 5 triage categories, we are facing a multiclass classification problem. Since the classes are not balanced, the metric used to evaluate the performance of the models will be the macro F1 score, as it weighs precision and recall.
 
-## Requerimientos:
-Este proyecto se realiso en Python con las siguientes librerias: 
+## Requirements:
+This project was carried out in Python with the following libraries:
+
 * re
-* pandas 
-* numpy 
+* pandas
+* numpy
 * matplotlib.pyplot as plt
 * seaborn as sns
 * sklearn
 * pickle
 * nltk
 
-## Contenido
-En este post se puede encontrar:
+## Contents
+In this post, you can find:
 
-1. base_consulta.csv 
-2. base_datos.csv 
-3. Notebook Clasificacion_triage(1).py
-4. Notebook Clasificacion_triaje.ipnynb
-5. base_consulta.zip
+* base_consulta.csv
+* base_datos.csv
+* Notebook Clasificacion_triage(1).py
+* Notebook Clasificacion_triaje.ipnynb
+* base_consulta.zip
 
-## Descripción de los datos
-Para el desarrollo de este proyecto se tiene un conjunto de 20.000 registros de pacientes que han asistido a urgencias entre el año 2021 y 2022. La información esta divida en 2 conjuntos de datos:
+ You can unzip the base query folder and there you will find the notebook and the model in pkl format.
+ 
+## Description of the Data
+For the development of this project, there is a dataset of 20,000 patient records who have attended emergency rooms between 2021 and 2022. The information is divided into 2 datasets:
 
-base_datos: Base de datos de pacientes con las siguientes variables:
-* ID_TM_Afiliado_cod: Id único de cada paciente.
-* Edad: Edad del paciente.
-* Genero: Genero del paciente.
-* SedeAtencion: Luegar de atención.
-* TipoAtencion: Tipo de atención recibida.
-* TipoAfiliado: Tipo de afiliación del paciente.
+1.  base_datos: Patient database with the following variables:
 
-2. base_consulta: Base de datos de las consultas con las siguientes variables:
+* ID_TM_Afiliado_cod: Unique ID for each patient.
+* Edad: Patient's age.
+* Genero: Patient's gender.
+* SedeAtencion: Place of care.
+* TipoAtencion: Type of care received.
+* TipoAfiliado: Patient's affiliation type.
 
-* ID_TM_Afiliado_cod: Id único de cada paciente.
-* IdConsulta_cod: ID único de la consulta.
-* Fecha: Fecha de la consulta.
-* Dia: Día de la consulta.
-* Mes: Mes de la consulta.
-* AÑO: Año de la consulta.
-* TAS: Tensión arterial sistólica.
-* TAD: Tensión arterial diastólica.
-* TAM: Tensión arterial media.
-* FC: Frecuencia cardiaca.
-* FR: Frecuencia respiratoria.
-* Temp: Temperatura.
-* Oximetria: Oximetria.
-* Anotacion TRIAGE Consulta: Texto registrado por el especialista.
-* ClasificaTriage: Triage asignado al paciente.
+2. base_consulta: Consultation database with the following variables:
 
-## Exploración de datos
+* ID_TM_Afiliado_cod: Unique ID for each patient.
+* IdConsulta_cod: Unique ID for the consultation.
+* Fecha: Consultation date.
+* Dia: Consultation day.
+* Mes: Consultation month.
+* AÑO: Consultation year.
+* TAS: Systolic blood pressure.
+* TAD: Diastolic blood pressure.
+* TAM: Mean arterial pressure.
+* FC: Heart rate.
+* FR: Respiratory rate.
+* Temp: Temperature.
+* Oximetria: Oxygen saturation.
+* Anotacion TRIAGE Consulta: Text recorded by the specialist.
+* ClasificaTriage: Triage assigned to the patient.
 
-Se analizaron los conjuntos de datos que contienen información relevante para la clasificación de triaje en las salas de urgencias. Estos conjuntos de datos incluyen características como temperatura, oximetría, edad y texto registrado por los profesionales de la salud al atender a los pacientes.
+## Data Exploration
+The datasets containing relevant information for triage classification in emergency rooms were analyzed. These datasets include characteristics such as temperature, oxygen saturation, age, and text recorded by healthcare professionals when attending to patients.
 
-Se examinaron las distribuciones de los datos y se calcularon estadísticas descriptivas para identificar cualquier anomalía o característica específica presente en los conjuntos de datos.
+The data distributions were examined, and descriptive statistics were calculated to identify any anomalies or specific features present in the datasets.
 
-## Visualización de datos
+## Data Visualization
+Data visualizations were constructed based on the analysis conducted in the previous step. These visualizations allowed for the identification of patterns, trends, or relationships between the characteristics and triage classes. Graphs such as histograms and box plots were used to visualize the distributions and relationships of the data.
 
-Se construyeron visualizaciones de datos basadas en el análisis realizado en el paso anterior. Estas visualizaciones permitieron identificar patrones, tendencias o relaciones entre las características y las clases de triaje. Se utilizaron gráficos, como histogramas y diagramas de caja, para visualizar las distribuciones y relaciones de los datos.
 
-## Tercera fase: Metodología
+## Data Preprocessing
+Data preprocessing stages were performed to ensure the quality and consistency of the data. This included handling outliers, normalizing numerical data, and encoding categorical variables. Text analysis was also conducted to transform the text recorded by healthcare professionals into numerical features that could be used by the model.
 
-En esta fase se detallan los pasos llevados a cabo para implementar el modelo de clasificación y refinarlo. A continuación se describe la metodología utilizada:
+## Implementation
+Three multiclass classification algorithms were selected: Logistic Regression, Random Forest, and Neural Network. Pipelines were implemented, including data preprocessing stages, and the grid search technique was applied to optimize the parameters of each algorithm. Three training and evaluation phases were executed: the first using only numerical data, the second using only text data, and the third using mixed data.
 
-## Preprocesamiento de datos
+## Refinement
+During the refinement phase, additional adjustments were made to the algorithms and techniques used. This included using cross-validation techniques to evaluate the performance of the models, as well as modifying the parameters of the algorithms to obtain better results.
 
-Se realizaron etapas de preprocesamiento de datos para asegurar la calidad y consistencia de los mismos. Esto incluyó el manejo de valores atípicos, la normalización de los datos numéricos y la codificación de las variables categóricas. También se realizó un análisis de texto para transformar el texto registrado por los profesionales de la salud en características numéricas que pudieran ser utilizadas por el modelo.
+## Results
+1. The evaluation and validation of the models developed during the methodology were conducted. Different metrics, such as accuracy, recall, and F1 score, were used to evaluate the performance of the models. The obtained results for each model were compared in tabular form.
+2. The attached model pkl file is included in the folder.
+3. Article on Medium: https://medium.com/@diego.maca/clasificaci%C3%B3n-de-triage-en-mediante-modelos-de-aprendizaje-autom%C3%A1tico-5491976aa091
 
-## Implementación
+## Conclusions
+In summary, this project addressed the challenge of triage classification in healthcare services. Through the use of various models and techniques, we developed a comprehensive solution that supports healthcare professionals in accurately classifying patients.
 
-Se seleccionaron tres algoritmos de clasificación multiclase: Regresión Logística, Random Forest y Red Neuronal. Se implementaron pipelines que incluyeron las etapas de preprocesamiento de datos y se aplicó la técnica de grid search para optimizar los parámetros de cada algoritmo. Se ejecutaron tres fases de entrenamiento y evaluación: la primera utilizando solo datos numéricos, la segunda utilizando solo datos de texto y la tercera utilizando datos mixtos.
+Regarding improvements, it is suggested to continue research to enhance the experiment. It is important to note that the developed model is ready to be complemented with an application that facilitates its deployment, achieving an end-to-end comprehensive solution. This complementary tool aims to support and improve the work of doctors in emergency situations, enabling them to make more precise and faster triage classification decisions.
 
-## Refinamiento
+## Acknowledgments:
+1. Udacity Data Scientist Course.
+2. Virrey Solis for providing the data for academic purposes.
 
-Durante la fase de refinamiento, se realizaron ajustes adicionales en los algoritmos y técnicas utilizados. Esto incluyó la utilización de técnicas de validación cruzada para evaluar el rendimiento de los modelos, así como la modificación de los parámetros de los algoritmos para obtener mejores resultados.
+## Usage
+The data provided for this project was solely for academic and non-commercial purposes. Furthermore, it was anonymized and treated in such a way that sensitive data is not part of the project and not available to the public.
 
-## Resultados 
+## Bibliography:
+1. Choi, S. W., Ko, T., Hong, K. J., & Kim, K. H. (2019). Machine learning-based prediction of Korean triage and acuity scale level in emergency department patients. Healthcare informatics research, 25(4), 305–312. 10.4258/hir.2019.25.4.305.
 
-1. Se llevó a cabo la evaluación y validación de los modelos desarrollados durante la metodología. Se utilizaron diferentes métricas para evaluar el rendimiento de los modelos, como la precisión, la exhaustividad y el valor F1. Además, se compararon los resultados obtenidos por cada modelo en forma de tablas.
-2. Se obtiene el modelo pkl adjunto en la carpeta.
-3. Articulo en Medium: https://medium.com/@diego.maca/clasificaci%C3%B3n-de-triage-en-mediante-modelos-de-aprendizaje-autom%C3%A1tico-5491976aa091
-
-## Conclusiones
-En resumen, este proyecto abordó el desafío de la clasificación de triage en los servicios de salud. Mediante el uso de diversos modelos y técnicas, desarrollamos una solución integral que brinda apoyo a los profesionales de la salud para clasificar con precisión a los pacientes.
-
-En cuanto a mejoras: Se sugiere continuar la investigación para mejorar el experimento. Es importante destacar que el modelo desarrollado está listo para ser complementado con una aplicación que facilite su despliegue y logre una solución integral de extremo a extremo. Esta herramienta complementaria tiene como objetivo apoyar y mejorar el trabajo de los médicos en situaciones de urgencia, permitiéndoles tomar decisiones más precisas y rápidas en la clasificación de triage.
-
-## Reconocimiento:
-1. Udacity Data scientist course.
-2. Virrey Solis por la proporción de los datos con fines academicos. 
-
-## Uso
-Los datos proporcionados para este proyecto se hizo con un fin únicamente académico y no comerciales. Además, fueron anonimizados y tratados de tal manera que los datos sensibles no hagan parte del proyecto ni esten disponibles al público.
-
-## Bibliografia:
-1. Choi, S. W., Ko, T., Hong, K. J., & Kim, K. H. (2019). Machine learning-based prediction of Korean triaje and acuity scale level in emergency department patients. Healthcare informatics research, 25(4), 305–312. 10.4258/hir.2019.25.4.305.
-
-## Autor 
+## Author
 Diego Maca
+
+
+
+
+
+
