@@ -3,6 +3,14 @@ In all healthcare institutions, ensuring the accurate classification of patients
 
 In this context, there is a need to improve the triage classification process in emergency rooms. This involves implementing tools and approaches that allow healthcare professionals to make more precise and faster decisions when classifying patients.
 
+## Summary
+
+The objective of this study was to find a classification model to categorize patients into 5 triage levels. An exploration and descriptive analysis of the data were conducted to assess its consistency and completeness. Subsequently, 6 relevant variables were selected, and the top 800 words in the text corpus were identified.
+
+Three models, namely logistic regression, random forest, and neural network, were trained in three distinct phases. The first phase used only numerical data, the second phase focused on text data, and the third phase combined both types of data. The performance of the models was compared using the F1-score metric, which is suitable for multiclass problems with imbalanced classes.
+
+Finally, the best model was selected among the nine evaluated, and the code was provided to export the model in pkl format, laying the foundation for future implementation projects in an application.
+
 ## Objective
 In light of this, the objective of this article is to develop a classification model that allows for the classification of patients arriving at an emergency room, taking into account characteristics such as temperature, oxygen saturation, age, among others, along with the text recorded by the healthcare professional when attending to the patients.
 
