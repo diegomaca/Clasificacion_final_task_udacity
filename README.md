@@ -94,7 +94,9 @@ During the refinement phase, additional adjustments were made to the algorithms 
 3. Article on Medium: https://medium.com/@diego.maca/clasificaci%C3%B3n-de-triage-en-mediante-modelos-de-aprendizaje-autom%C3%A1tico-5491976aa091
 
 ## Conclusions
-In summary, this project addressed the challenge of triage classification in healthcare services. Through the use of various models and techniques, we developed a comprehensive solution that supports healthcare professionals in accurately classifying patients.
+In summary, this project addressed the challenge of triage classification in health services. Using various models and techniques, we developed a comprehensive solution that supports healthcare professionals to accurately triage patients.
+
+The end-to-end problem solution successfully addressed the challenge of classifying patients into five triage categories. Through in-depth analysis, key findings and insights were gained, leading to the development of an effective classification model. The selected random forest model demonstrated the highest performance, accurately predicting triage categories. The solution leveraged numerical and textual data, overcoming challenges such as misspelled words and model interpretability. The provided code and model enable easy deployment for future applications.
 
 Regarding improvements, it is suggested to continue research to enhance the experiment. It is important to note that the developed model is ready to be complemented with an application that facilitates its deployment, achieving an end-to-end comprehensive solution. This complementary tool aims to support and improve the work of doctors in emergency situations, enabling them to make more precise and faster triage classification decisions.
 
